@@ -1,2 +1,14 @@
 h1 Posts#show
-p Find me in app/views/posts/show.html.slim
+= @post.user.email
+p
+  = @post.body
+
+h2
+  |#{@post.comments.count} comments
+p
+  - @post.comments.each do |comment|
+    p
+      = comment.user.email
+    p
+      = comment.body
+

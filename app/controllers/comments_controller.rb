@@ -2,8 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: %i[create update destroy]
 
   def index
-    @comments = Comment.order(created_at: :desc).last(10)
-    # .page(params[:page])
+    @comments = Comment.where(post_id: params[:id]).order(created_at: :desc).page(params[:page])
   end
 
   def create

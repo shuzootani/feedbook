@@ -1,2 +1,11 @@
 h1 Posts#index
-p Find me in app/views/posts/index.html.slim
+- @posts.each do |post|
+  h3
+    |No.
+    = post.id
+  p
+    = post.user.email
+  p
+    = post.body
+  p
+    = post.comments.count
