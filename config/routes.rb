@@ -10,5 +10,11 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  resources :posts, only: %i[index show create update destroy]
+  resources :posts, only: %i[index show create update destroy] do
+    get 'feed', on: :collection
+  end
+
+  resources :comments, only: %i[index create update destroy]
+
+  get 'users/me'
 end

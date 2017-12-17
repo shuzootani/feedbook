@@ -1,14 +1,9 @@
 h1 Posts#show
-= @post.user.email
+h4
+  = @post.user.name
 p
   = @post.body
 
-h2
-  |#{@post.comments.count} comments
-p
-  - @post.comments.each do |comment|
-    p
-      = comment.user.email
-    p
-      = comment.body
+#comment
+= javascript_include_tag 'webpack/comment.bundle'
 

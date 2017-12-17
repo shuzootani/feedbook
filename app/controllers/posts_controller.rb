@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[create update destroy]
 
   def index
-    @posts = Post.order(created_at: :desc)
+  end
+
+  def feed
+    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page])
+    render json: @posts, each_serializer: PostSerializer
   end
 
   def show
@@ -11,7 +15,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create!(post_params)
-    render json: @post
+    render json: @post, serializer: PostSerializer
   rescue => e
     handle_error(e)
   end
@@ -19,15 +23,16 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     @post.update!(post_params)
-    render json: @post
+    render json: @post, serializer: PostSerializer
   rescue => e
     handle_error(e)
   end
 
   def destroy
     @post = current_user.posts.find(params[:id])
+    post_id = @post.id
     @post.destroy!
-    render json: {status: :ok}
+    render json: post_id
   rescue => e
     handle_error(e)
   end

@@ -1,11 +1,2 @@
-h1 Posts#index
-- @posts.each do |post|
-  h3
-    |No.
-    = post.id
-  p
-    = post.user.email
-  p
-    = post.body
-  p
-    = post.comments.count
+#timeline
+= javascript_include_tag 'webpack/timeline.bundle'

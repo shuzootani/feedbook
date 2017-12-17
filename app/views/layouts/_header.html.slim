@@ -1,0 +1,16 @@
+.header
+  ul
+    li
+      = link_to root_path do
+        .header__logo
+          |実践！夢分析
+    - if user_signed_in?
+      li
+        = link_to 'Mypage'
+      li 
+        = link_to 'Logout', logout_path
+    - else
+      li
+        = link_to 'Login', login_path
+      li
+        = link_to 'SignUp', signup_path
