@@ -28,6 +28,8 @@ gem 'devise'
 gem 'active_model_serializers'
 gem 'kaminari'
 
+gem 'natto'
+
 # heroku log
 gem 'rails_12factor', group: :production
 
