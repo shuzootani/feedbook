@@ -4,6 +4,11 @@ class PostsController < ApplicationController
   def index
   end
 
+  def my_words
+    words = Post.second.word_and_count
+    render json: words
+  end
+
   def feed
     @posts = Post.includes(:user).order(created_at: :desc).page(params[:page])
     render json: @posts, each_serializer: PostSerializer
