@@ -4,11 +4,11 @@ var webpack = require('webpack');
 module.exports = [
     {
         entry: {
-            search_page: path.join(__dirname, "src/search/index.js"),
-            reviews: path.join(__dirname, "src/review/index.js")
+            timeline: path.join(__dirname, "./client/src/timeline/index.js"),
+            comment: path.join(__dirname, "./client/src/comment/index.js")
         },
         output: {
-            path: path.join(__dirname, "../app/assets/javascripts/webpack"),
+            path: path.join(__dirname, "./app/assets/javascripts/webpack"),
             filename: "[name].bundle.js"
         },
         module: {
