@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:3000";
+// const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://yumelog.herokuapp.com"
 const csrfToken = document.getElementsByName("csrf-token").item(0).content;
 const same_origin = {
   credentials: "same-origin"
