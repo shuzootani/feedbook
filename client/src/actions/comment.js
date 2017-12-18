@@ -2,10 +2,10 @@ import { get, post, destroy, patch } from "../http";
 import { handleError } from "../error";
 
 // Public
-export const fetchComments = () => {
+export const fetchComments = (page) => {
 let id = location.pathname.match(/[0-9]+/)[0]
   return dispatch => {
-    get(`/comments?post_id=${id}`)
+    get(`/comments?post_id=${id}&page=${page}`)
       .then(comments => {
         dispatch(successFetchComments(comments));
       })

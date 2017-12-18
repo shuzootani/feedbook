@@ -3,6 +3,7 @@ import CommentForm from "../components/comment_field";
 import Grid from "material-ui/Grid";
 import Typography from "material-ui/Typography";
 import CommentItem from "./comment_item";
+import Button from "material-ui/Button";
 
 const CommentList = ({ comments, me, add, remove }) => {
   const commentCount = () => {
@@ -15,6 +16,10 @@ const CommentList = ({ comments, me, add, remove }) => {
     return { id, add };
   };
 
+  const loadMore = () => {
+    this.props.load(2)
+  }
+
   return (
     <div>
       {commentCount()}
@@ -22,6 +27,7 @@ const CommentList = ({ comments, me, add, remove }) => {
       {comments.map(comment => {
         return <CommentItem me={me} key={comment.id} {...comment} remove={id => remove(id)} />;
       })}
+      <Button onClick={e => loadMore()}>Load More</Button>
     </div>
   );
 };

@@ -12,7 +12,8 @@ const stateToProps = state => {
 const dispatchToProps = dispatch => {
   return {
     add: (id, body) => dispatch(comment.addComment(id, body)),
-    remove: id => dispatch(comment.removeComment(id))
+    remove: id => dispatch(comment.removeComment(id)),
+    load: page => dispatch(comment.fetchComments(page))
   };
 };
 
