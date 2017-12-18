@@ -6,7 +6,7 @@
           |実践！夢分析
     - if user_signed_in?
       li
-        = link_to 'Mypage'
+        = link_to 'Mypage', user_path(current_user.id)
       li 
         = link_to 'Logout', logout_path
     - else

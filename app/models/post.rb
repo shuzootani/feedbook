@@ -6,10 +6,11 @@ class Post < ApplicationRecord
 
   paginates_per 20
 
-  def word_and_count
+  def self.word_cloud_of(user)
+    document = user.posts.pluck(:body).join(' ')
     nm = Natto::MeCab.new
     words = []
-    nm.parse(self.body) do |n|
+    nm.parse(document) do |n|
       words << n.surface unless n.feature =~ /助詞|\?/
     end
 
