@@ -28,7 +28,7 @@ gem 'devise'
 gem 'active_model_serializers'
 gem 'kaminari'
 
-gem 'mecab', '0.996'
+gem 'mecab'
 gem 'natto'
 
 # heroku log
