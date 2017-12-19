@@ -2,11 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: %i[create update destroy]
 
   def index
-    if params[:page] == 1
-      @comments = Comment.includes(:user).where(post_id: params[:post_id]).order(created_at: :desc).page(params[:page])
-    else
-      @comments = Comment.includes(:user).where(post_id: params[:post_id]).order(created_at: :desc).offset(11)
-    end
+    @comments = Comment.includes(:user).where(post_id: params[:post_id]).order(created_at: :desc).page(params[:page])
     render json: @comments, each_serializer: CommentSerializer
   end
 

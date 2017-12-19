@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { PostForm } from "../module/post_form";
-import { PostItem } from "../module/post_item";
+import { PostForm } from "./post_form";
+import { PostItem } from "./post_item";
 import "../scss/module.scss";
 import { CircularProgress } from 'material-ui/Progress';
 

@@ -13,7 +13,7 @@ import rootReducer from "../reducers";
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 store.dispatch(fetchMe());
-store.dispatch(comment.fetchComments(1))
+store.dispatch(comment.fetchComments())
 
 ReactDOM.render(
   <Provider store={store}>

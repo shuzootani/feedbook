@@ -1,8 +1,12 @@
-h1 Posts#show
-h4
-  = @post.user.name
-p
-  = @post.body
+.postDetail
+  .postDetail__header
+    .postDetail__header__username
+      | 投稿者：
+      = link_to @post.user.name, user_path(@post.user_id)
+    = @post.created_at.strftime('%Y年%m月%d日 %H:%M')
+    
+  .postDetail__content
+    = @post.body
 
 #comment
 = javascript_include_tag 'webpack/comment.bundle'

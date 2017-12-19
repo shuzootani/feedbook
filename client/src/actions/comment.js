@@ -2,12 +2,16 @@ import { get, post, destroy, patch } from "../http";
 import { handleError } from "../error";
 
 // Public
-export const fetchComments = (page) => {
-let id = location.pathname.match(/[0-9]+/)[0]
+export const fetchComments = (page = 1) => {
+  let id = location.pathname.match(/[0-9]+/)[0];
   return dispatch => {
     get(`/comments?post_id=${id}&page=${page}`)
       .then(comments => {
-        dispatch(successFetchComments(comments));
+        if (page === 1) {
+          dispatch(successFetchComments(comments));
+        } else {
+          dispatch(successLoadComments(comments));
+        }
       })
       .catch(e => handleError(e));
   };
@@ -15,7 +19,7 @@ let id = location.pathname.match(/[0-9]+/)[0]
 
 export const addComment = (id, body) => {
   return dispatch => {
-    post(`/comments?post_id=${id}`, {comment: {body}})
+    post(`/comments?post_id=${id}`, { comment: { body } })
       .then(comment => {
         dispatch(successAddComment(comment));
       })
@@ -25,7 +29,7 @@ export const addComment = (id, body) => {
 
 export const updateComment = (id, body) => {
   return dispatch => {
-    patch(`/comments/${id}`, {comment: {body}})
+    patch(`/comments/${id}`, { comment: { body } })
       .then(comment => {
         dispatch(successUpdateComment(comment));
       })
@@ -33,7 +37,7 @@ export const updateComment = (id, body) => {
   };
 };
 
-export const removeComment = (id) => {
+export const removeComment = id => {
   return dispatch => {
     destroy(`/comments/${id}`)
       .then(id => {
@@ -44,30 +48,37 @@ export const removeComment = (id) => {
 };
 
 // Private
-const successFetchComments = (comments) => {
+const successFetchComments = comments => {
   return {
     type: "FETCH_COMMENTS",
     comments
-  }
-}
+  };
+};
 
-const successAddComment = (comment) => {
+const successLoadComments = comments => {
+  return {
+    type: "LOAD_MORE_COMMENTS",
+    comments
+  };
+};
+
+const successAddComment = comment => {
   return {
     type: "ADD_COMMENT",
     comment
-  }
-}
+  };
+};
 
-const successUpdateComment = (comment) => {
+const successUpdateComment = comment => {
   return {
     type: "UPDATE_COMMENT",
     comment
-  }
-}
+  };
+};
 
-const successRemoveFeed = (id) => {
+const successRemoveFeed = id => {
   return {
     type: "REMOVE_COMMENT",
     id
-  }
-}
+  };
+};

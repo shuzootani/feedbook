@@ -1,7 +1,8 @@
+import React, { Component } from "react";
+
 import List, {
   ListItem,
   ListItemAvatar,
-  ListItemIcon,
   ListItemSecondaryAction,
   ListItemText
 } from "material-ui/List";
@@ -10,8 +11,8 @@ import IconButton from "material-ui/IconButton";
 import Delete from "material-ui-icons/Delete";
 import Edit from "material-ui-icons/ModeEdit";
 import Divider from "material-ui/Divider";
-import React, { Component } from "react";
 import Dialog from "../containers/comment_dialog";
+import { withStyles } from "material-ui/styles";
 
 class CommentItem extends Component {
   state = {
@@ -27,12 +28,12 @@ class CommentItem extends Component {
   }
 
   comment_params() {
-    let { id, body } = {...this.props}
-    return {id, body}
+    let { id, body } = { ...this.props };
+    return { id, body };
   }
 
   ownerActions() {
-    if (this.props.me.id !== this.props.owner.id) return null
+    if (this.props.me.id !== this.props.owner.id) return null;
     return (
       <div>
         <IconButton onClick={e => this.openDialog(e)}>
@@ -42,23 +43,31 @@ class CommentItem extends Component {
           <Delete />
         </IconButton>
       </div>
-    )
+    );
   }
 
   render() {
     return (
-      <div>
+      <div className="mb16">
         <List dense={true}>
           <ListItem button>
-            <ListItemAvatar>
-              <Avatar>{this.props.owner.name.charAt(0)}</Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={this.props.owner.name}
-              secondary={this.props.body}
-            />
+            <a href={`/users/` + this.props.owner.id}>
+              <ListItemAvatar>
+                <Avatar>{this.props.owner.name.charAt(0)}</Avatar>
+              </ListItemAvatar>
+            </a>
+            <div className="pl16 pr48">
+              <ListItemText
+                primary={this.props.owner.name}
+                secondary={this.props.body}
+              />
+            </div>
             <ListItemSecondaryAction>
-              <Dialog open={this.state.open} close={e => this.closeDialog()} {...this.comment_params()}/>
+              <Dialog
+                open={this.state.open}
+                close={e => this.closeDialog()}
+                {...this.comment_params()}
+              />
               {this.ownerActions()}
             </ListItemSecondaryAction>
           </ListItem>

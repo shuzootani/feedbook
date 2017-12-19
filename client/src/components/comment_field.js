@@ -2,6 +2,7 @@ import React from "react";
 import { CardActions } from "material-ui/Card";
 import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
+import "../scss/module.scss";
 
 const CommentField = ({ id, add }) => {
   const handleClick = e => {
@@ -12,11 +13,11 @@ const CommentField = ({ id, add }) => {
   };
 
   return (
-    <div>
+    <div className="wrap80 center liner mb24">
       <TextField
         multiline
         rowsMax="5"
-        id={id + '-post-comment'}
+        id={id + "-post-comment"}
         fullWidth
         placeholder="add comment..."
       />
@@ -25,4 +26,4 @@ const CommentField = ({ id, add }) => {
   );
 };
 
-export default CommentField
+export default CommentField;

@@ -10,7 +10,7 @@ import Dialog, {
 
 class PostDialog extends Component {
   state = {
-    value: this.props.body
+    value: this.props.body ? this.props.body : ''
   }
 
   handleEdit(e) {

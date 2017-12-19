@@ -5,7 +5,7 @@ import Typography from "material-ui/Typography";
 import CommentItem from "./comment_item";
 import Button from "material-ui/Button";
 
-const CommentList = ({ comments, me, add, remove }) => {
+const CommentList = ({ comments, me, add, remove, load }) => {
   const commentCount = () => {
     if (comments.length < 1) return;
     return <Typography>{comments.length} comments</Typography>;
@@ -17,17 +17,17 @@ const CommentList = ({ comments, me, add, remove }) => {
   };
 
   const loadMore = () => {
-    this.props.load(2)
+    load(2)
   }
 
   return (
-    <div>
+    <div className='wrap80'>
       {commentCount()}
       <CommentForm {...comment_params()} />
       {comments.map(comment => {
         return <CommentItem me={me} key={comment.id} {...comment} remove={id => remove(id)} />;
       })}
-      <Button onClick={e => loadMore()}>Load More</Button>
+      <Button onClick={e => loadMore()}>Load More Comments</Button>
     </div>
   );
 };
