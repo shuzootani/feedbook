@@ -4,7 +4,8 @@ import TimelineComponent from "../components/timeline";
 
 const stateToProps = state => {
   return {
-    posts: state.posts.feed
+    posts: state.posts.feed,
+    me: state.users.me
   };
 };
 

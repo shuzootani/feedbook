@@ -1,6 +1,5 @@
 import React from "react";
-import Card, { CardHeader, CardActions, CardContent } from "material-ui/Card";
-import Button from "material-ui/Button";
+import Card, { CardHeader, CardContent } from "material-ui/Card";
 import Avatar from "material-ui/Avatar";
 import Typography from "material-ui/Typography";
 import PostActions from "../containers/post_actions";

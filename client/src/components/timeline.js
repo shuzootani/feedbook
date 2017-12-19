@@ -45,7 +45,7 @@ class Timeline extends Component {
   render() {
     return (
       <div className="wrap60">
-        <PostForm add={body => this.props.add(body)} />
+        <PostForm add={body => this.props.add(body)} me={this.props.me}/>
         {this.props.posts.map(post => {
           return (
             <PostItem

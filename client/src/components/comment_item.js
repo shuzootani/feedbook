@@ -33,6 +33,7 @@ class CommentItem extends Component {
   }
 
   ownerActions() {
+    if (this.props.me === null) return null
     if (this.props.me.id !== this.props.owner.id) return null;
     return (
       <div>

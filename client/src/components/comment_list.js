@@ -23,7 +23,7 @@ const CommentList = ({ comments, me, add, remove, load }) => {
   return (
     <div className='wrap80'>
       {commentCount()}
-      <CommentForm {...comment_params()} />
+      <CommentForm {...comment_params()} me={me} />
       {comments.map(comment => {
         return <CommentItem me={me} key={comment.id} {...comment} remove={id => remove(id)} />;
       })}
