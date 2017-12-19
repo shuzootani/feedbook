@@ -1,4 +1,4 @@
-require 'natto'
+# require 'natto'
 
 class Post < ApplicationRecord
   belongs_to :user
