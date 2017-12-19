@@ -1,32 +1,23 @@
 # README
 
 ## アプリ概要
-RailsとReactで寝ているときに見た夢を記録するアプリを作りました。
+RailsとReactで睡眠時の夢を記録するアプリを作りました。
 https://yumelog.herokuapp.com/
 
-### ローカル環境
-git clone
 
-`cd yumelog`
-
-`bundle install -j4 --path vendor/bundle`
-
-`rake db:create`
-
-`rake db:migrate`
-
-`rails s`
-
-`cd client`
-
-`npm start`
+## 内容
+- 夢の投稿、編集、削除
+- 夢に対するコメントの投稿、編集、削除
+- 夢によく現れる言葉をもとにしたワードクラウド（夢の内容をMecabで形態素解析して、D3.jsでワードクラウドを描画）を作成したが、Herokuでmecabをうまく動かせず本番では動きません（おそらくnattoからmecabが見つけれてない？）
 
 ## 技術
 ### バックエンド
 - Rails
   - active model serializer
   - devise
+  - natto
 - Postgresql
+- Mecab
 
 ### フロントエンド
 - React, ES6
@@ -35,6 +26,7 @@ git clone
 - [Material UI](http://www.material-ui.com/#/)
 - scss
 - webpack
+- D3.js
 
 ## 工夫点
 - フルSPAではなく、複数エントリーポイントに分けて不要なJSを一気に読み込まないようにした。
