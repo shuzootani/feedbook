@@ -4,11 +4,13 @@
 RailsとReactで睡眠時の夢を記録するアプリを作りました。
 https://yumelog.herokuapp.com/
 
-
 ## 内容
 - 夢の投稿、編集、削除
 - 夢に対するコメントの投稿、編集、削除
 - 夢によく現れる言葉をもとにしたワードクラウド（夢の内容をMecabで形態素解析して、D3.jsでワードクラウドを描画）を作成したが、Herokuでmecabをうまく動かせず本番では動きません（おそらくnattoからmecabが見つけれてない？）
+
+*ローカルでの実行画像
+![](https://user-images.githubusercontent.com/19385183/34191988-5916a1c8-e58e-11e7-961a-84bb9164c5ef.png)
 
 ## 技術
 ### バックエンド
