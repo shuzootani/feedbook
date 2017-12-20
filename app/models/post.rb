@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
 
-  paginates_per 20
+  paginates_per 10
 
   def self.word_cloud_of(user)
     # nm = Natto::MeCab.new
