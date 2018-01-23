@@ -7,7 +7,7 @@ import TextField from "material-ui/TextField";
 export const PostForm = ({ add, me }) => {
   const handleClick = event => {
     if (me === null) location.href = "/signup";
-    let body = document.getElementById("text-body").value;
+    const body = document.getElementById("text-body").value;
     if (body.trim() === "") return;
     add(body);
     document.getElementById("text-body").value = "";

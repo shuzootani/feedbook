@@ -28,7 +28,7 @@ class CommentItem extends Component {
   }
 
   comment_params() {
-    let { id, body } = { ...this.props };
+    const { id, body } = { ...this.props };
     return { id, body };
   }
 

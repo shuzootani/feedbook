@@ -50,14 +50,14 @@ export const get_with_auth = path => {
 };
 
 export const post = (path, params = {}) => {
-  let body = to_json(params);
+  const body = to_json(params);
   return fetch(BASE_URL + path, { ...post_header, body }).then(res =>
     res.json()
   );
 };
 
 export const patch = (path, params = {}) => {
-  let body = to_json(params);
+  const body = to_json(params);
   return fetch(BASE_URL + path, { ...patch_header, body }).then(res =>
     res.json()
   );

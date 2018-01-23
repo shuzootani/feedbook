@@ -7,7 +7,7 @@ import "../scss/module.scss";
 const CommentField = ({ id, add, me }) => {
   const handleClick = e => {
     if (me === null) location.href = "/signup";
-    let body = document.getElementById(`${id}-post-comment`).value;
+    const body = document.getElementById(`${id}-post-comment`).value;
     if (body.trim() === "") return;
     add(id, body);
     document.getElementById(`${id}-post-comment`).value = "";

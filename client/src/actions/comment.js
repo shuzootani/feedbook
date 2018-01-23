@@ -3,7 +3,7 @@ import { handleError } from "../error";
 
 // Public
 export const fetchComments = (page = 1) => {
-  let id = location.pathname.match(/[0-9]+/)[0];
+  const id = location.pathname.match(/[0-9]+/)[0];
   return dispatch => {
     get(`/comments?post_id=${id}&page=${page}`)
       .then(comments => {

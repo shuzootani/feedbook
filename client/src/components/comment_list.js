@@ -12,7 +12,7 @@ const CommentList = ({ comments, me, add, remove, load }) => {
   };
 
   const comment_params = () => {
-    let id = location.pathname.match(/[0-9]+/)[0];
+    const id = location.pathname.match(/[0-9]+/)[0];
     return { id, add };
   };
 
